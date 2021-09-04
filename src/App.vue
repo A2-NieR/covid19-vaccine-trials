@@ -1,13 +1,12 @@
 <template>
   <div class="container text-center my-5">
-    <h1 class="py-5">Covid-19 Vaccine Trials</h1>
-    <Trials :vaccines="data.vaccines" />
+    <h1 class="display-4 py-5">Covid-19 Vaccine Trials</h1>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import data from './assets/vaccines.json'
-import Trials from './components/Trials.vue'
 
 export default {
   setup() {
@@ -55,9 +54,6 @@ export default {
     }
 
     return { data }
-  },
-  components: {
-    Trials
   }
 }
 </script>

@@ -3,15 +3,21 @@
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
       <div class="col" v-for="vax in vaccines" :key="vax.id">
         <div class="card text-center shadow">
-          <div class="card-header fs-5">
+          <div class="card-header fs-5 bg-primary text-white">
             {{ vax.name }}
           </div>
           <div class="card-body">
-            <p class="text-secondary">Active Trials: {{ vax.activeTrials }}</p>
-            <p class="text-success">
+            <span>Active Trials: {{ vax.activeTrials }}</span>
+            <p class="text-success pt-1">
               Completed Trials: {{ vax.completedTrials }}
             </p>
-            <a href="#" class="btn btn-link">Details</a>
+            <router-link
+              :to="{
+                name: 'details',
+                params: { id: vax.id, vax: JSON.stringify(vax) }
+              }"
+              >Details</router-link
+            >
           </div>
         </div>
       </div>
@@ -20,12 +26,14 @@
 </template>
 
 <script>
+import data from '../assets/vaccines.json'
+
 export default {
-  props: ['vaccines'],
-  setup(props) {
+  setup() {
     const vaccines = []
+
     for (let i = 0; i < sessionStorage.length; i++) {
-      vaccines.push(JSON.parse(sessionStorage.getItem(props.vaccines[i].name)))
+      vaccines.push(JSON.parse(sessionStorage.getItem(data.vaccines[i].name)))
     }
 
     return { vaccines }
