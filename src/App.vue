@@ -1,12 +1,13 @@
 <template>
-  <div>
-    <h1>Covid-19 Vaccine Trials</h1>
-    <p>Test</p>
+  <div class="container text-center my-5">
+    <h1 class="py-5">Covid-19 Vaccine Trials</h1>
+    <Trials :vaccines="data.vaccines" />
   </div>
 </template>
 
 <script>
 import data from './assets/vaccines.json'
+import Trials from './components/Trials.vue'
 
 export default {
   setup() {
@@ -49,13 +50,14 @@ export default {
     if (sessionStorage.length === 0) {
       console.log('Get data from API...')
       getTrials()
-      console.log(window.sessionStorage)
     } else {
-      console.log('Data in session storage: ')
-      console.log(window.sessionStorage)
+      console.log('Data in session storage')
     }
 
-    return {}
+    return { data }
+  },
+  components: {
+    Trials
   }
 }
 </script>
