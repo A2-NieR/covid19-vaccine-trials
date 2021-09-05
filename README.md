@@ -29,21 +29,19 @@ The data gets extracted and is put into a table showing the following details fo
 
 <br>
 
-## Screenshots
-
-### Home view:
+## Home view
 
 <br>
 
 ![Screenshot home](/public/images/home.png)
 
-### Trials view:
+## Trials view
 
 <br>
 
 ![Screenshot details](/public/images/trials.png)
 
-### Detail view:
+## Detail view
 
 <br>
 
