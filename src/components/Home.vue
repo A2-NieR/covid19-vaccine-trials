@@ -14,6 +14,16 @@
           link at the end of each row in the table.
         </p>
         <div class="visually-hidden">{{ reqCounter }}</div>
+        <div v-if="store.length !== vaccines.length" class="progress">
+          <div
+            class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            :aria-valuenow="reqCounter * 10"
+            aria-valuemin="0"
+            aria-valuemax="130"
+            :style="{ width: reqCounter * 10 + '%' }"
+          ></div>
+        </div>
         <button
           type="button"
           v-if="store.length === vaccines.length"
