@@ -31,7 +31,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="trial in vax.trials" :key="trial.NCTId">
+          <tr
+            v-for="trial in vax.trials"
+            :key="trial.NCTId"
+            :class="setRowColor(trial.CompletionDate[0])"
+          >
             <th scope="row">{{ trial.Rank }}</th>
             <td>{{ trial.OfficialTitle[0] }}</td>
             <td>{{ trial.Phase[0] }}</td>
@@ -59,15 +63,22 @@ import { useRouter } from 'vue-router'
 export default {
   props: ['vax'],
   setup(props) {
-    const vax = JSON.parse(props.vax)
-
     const router = useRouter()
+    const vax = JSON.parse(props.vax)
 
     const toTrials = () => {
       router.push('/trials')
     }
 
-    return { vax, toTrials }
+    const setRowColor = (compDate) => {
+      if (new Date(compDate) < new Date()) {
+        return 'table-success'
+      } else {
+        return ''
+      }
+    }
+
+    return { vax, toTrials, setRowColor }
   }
 }
 </script>
