@@ -32,6 +32,7 @@ export default {
   setup() {
     const vaccines = []
 
+    // Extract data from sessionStorage
     for (let i = 0; i < sessionStorage.length; i++) {
       vaccines.push(JSON.parse(sessionStorage.getItem(data.vaccines[i].name)))
     }
